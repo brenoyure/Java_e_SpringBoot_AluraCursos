@@ -7,12 +7,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.endereco.Endereco;
 
 @Entity
 @Table(name = "pacientes")
+@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -31,6 +33,7 @@ public class Paciente {
 		this.nome = dados.nome();
 		this.email = dados.email();
 		this.telefone = dados.telefone();
+		this.cpf = dados.cpf();
 		this.endereco = new Endereco(dados.endereco());
 	}
 

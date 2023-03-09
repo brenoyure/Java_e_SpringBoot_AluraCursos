@@ -1,0 +1,3 @@
+ALTER TABLE pacientes 
+	ADD COLUMN 
+		telefone VARCHAR(11) NOT NULL;
