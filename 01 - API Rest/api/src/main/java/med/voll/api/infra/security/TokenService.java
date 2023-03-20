@@ -1,6 +1,7 @@
 package med.voll.api.infra.security;
 
 import static com.auth0.jwt.JWT.create;
+import static com.auth0.jwt.JWT.require;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC256;
 import static java.time.LocalDateTime.now;
 
@@ -24,6 +25,14 @@ public class TokenService {
 				.withIssuer("API Voll Med")
 				.sign(HMAC256(secret));
 			
+	}
+	
+	public String getSubject(String tokenJWT) {
+		return require(HMAC256(secret))
+				.withIssuer("API Voll Med")
+				.build()
+				.verify(tokenJWT)
+				.getSubject();
 	}
 
 	private Instant getDataEHoraDeExpiracao() {
